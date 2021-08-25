@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+
+    <div>
+        <h1 id="title">Mi calculadora</h1>
+        <form id="formElement">
+            <input type="number" name="bill" placeholder="Bill">
+
+            <div style="display: flex; flex-direction: column;">
+                <span>Tip %</span>
+
+                <div>
+                    <input type="radio" name="tip" checked value="5">
+                    <label for="html">5%</label><br>
+                    <input type="radio" name="tip" value="10">
+                    <label for="css">10%</label><br>
+                    <input type="radio" name="tip" value="15">
+                    <label for="javascript">15%</label>
+                    <input type="radio" name="tip" value="custom">
+                    <label for="javascript">custom</label>
+                </div>
+            </div>
+            <input type="number" name="custom" id="custom" placeholder="Indica un %" style="display: none;">
+            <input type="number" name="people" placeholder="Numero de persona">
+            <button type="submit">Calcular</button>
+        </form>
+        
+    </div>
+    <script> 
+
+        //Proceso de desarrollo
+        // 1. Obtener datos
+        // 1. Procesar datos
+        // 1. Retornar datos
+        
+        // Obtengo el formulario y el h1
+        const formElem = document.getElementById('formElement');
+        const title = document.getElementById('title');
+
+        // Caputurar el evento submit del formulario
+        formElem.addEventListener('submit', (event) => {
+            event.preventDefault(); // Evito que la pagina se recargue
+
+            // Convierto los elementos del formulario en variables
+            // https://developer.mozilla.org/es/docs/Web/API/FormData/Using_FormData_Objects
+            let [bill, tip, custom, people] = new FormData(formElem);
+
+            // Hago los calculos necesarios
+            let calculate = parseInt(bill[1]) + parseInt(people[1])
+            console.log(bill, tip, custom, people)
+
+            // Muestro el resultado dentro del h1
+            title.innerHTML = `El resultado es: ${calculate}`;
+
+        });
+
+    </script>
+</body>
+</html>
